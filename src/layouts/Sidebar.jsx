@@ -5,7 +5,8 @@ import {
     History,
     Sparkles,
     CalendarClock,
-    Apple
+    Apple,
+    X
 } from "lucide-react";
 
 import { NavLink } from "react-router-dom";
@@ -48,41 +49,64 @@ const menus = [
     }
 ];
 
-export default function Sidebar() {
+export default function Sidebar({
+    sidebarOpen,
+    setSidebarOpen
+}) {
     return (
-        <aside className="w-72 bg-white border-r border-slate-200">
+        <>
+            {/* Overlay */}
+            <div
+                onClick={() => setSidebarOpen(false)}
+                className={`fixed inset-0 bg-black/40 z-30 transition-opacity md:hidden ${sidebarOpen
+                        ? "opacity-100 visible"
+                        : "opacity-0 invisible"
+                    }`}
+            />
 
-            <div className="h-16 flex items-center px-6 border-b">
+            <aside
+                className={`
+        fixed md:static
+        top-16 md:top-0
+        left-0
+        z-40
+        h-[calc(100vh-4rem)] md:h-screen
+        w-72
+        bg-white
+        border-r
+        border-slate-200
+        transform
+        transition-transform
+        duration-300
+        ${sidebarOpen
+                        ? "translate-x-0"
+                        : "-translate-x-full md:translate-x-0"
+                    }
+    `}
+            >
 
-                <h1 className="text-xl font-bold text-emerald-600">
-                    Nutrition AI
-                </h1>
+                <div className="p-5 space-y-2">
 
-            </div>
-
-            <div className="p-5 space-y-2">
-
-                {menus.map(menu => (
-                    <NavLink
-                        key={menu.path}
-                        to={menu.path}
-                        className={({ isActive }) =>
-                            `flex items-center gap-3 rounded-xl px-4 py-3 transition
-                            ${
-                                isActive
+                    {menus.map((menu) => (
+                        <NavLink
+                            key={menu.path}
+                            to={menu.path}
+                            onClick={() => setSidebarOpen(false)}
+                            className={({ isActive }) =>
+                                `flex items-center gap-3 rounded-xl px-4 py-3 transition ${isActive
                                     ? "bg-emerald-600 text-white"
                                     : "text-slate-600 hover:bg-slate-100"
-                            }`
-                        }
-                    >
-                        <menu.icon size={20} />
+                                }`
+                            }
+                        >
+                            <menu.icon size={20} />
+                            {menu.name}
+                        </NavLink>
+                    ))}
 
-                        {menu.name}
-                    </NavLink>
-                ))}
+                </div>
 
-            </div>
-
-        </aside>
+            </aside>
+        </>
     );
 }
