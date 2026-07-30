@@ -1,130 +1,79 @@
 import { Eye } from "lucide-react";
 
-export default function MealHistoryTable({
-    meals
-}) {
-
+export default function MealHistoryTable({ meals }) {
     return (
+        <div className="space-y-5">
+            {meals.map((meal) => {
+                const totalCalories = meal.mealItems.reduce(
+                    (sum, item) => sum + item.calories,
+                    0
+                );
 
-        <div className="bg-white rounded-2xl shadow border overflow-hidden">
+                const totalProtein = meal.mealItems.reduce(
+                    (sum, item) => sum + item.protein,
+                    0
+                );
 
-            <table className="w-full">
+                const totalCarbs = meal.mealItems.reduce(
+                    (sum, item) => sum + item.carbs,
+                    0
+                );
 
-                <thead className="bg-slate-100">
+                const totalFat = meal.mealItems.reduce(
+                    (sum, item) => sum + item.fat,
+                    0
+                );
 
-                    <tr>
+                return (
+                    <div
+                        key={meal.mealId}
+                        className="bg-white rounded-2xl shadow border p-5 hover:shadow-md transition"
+                    >
+                        <div className="flex justify-between items-start gap-4">
+                            <div>
+                                <p className="text-sm text-slate-500">
+                                    {new Date(meal.mealDate).toLocaleDateString()}
+                                </p>
 
-                        <th className="text-left p-4">Date</th>
+                                <h3 className="mt-2 text-lg font-semibold text-slate-800">
+                                    {meal.mealText}
+                                </h3>
+                            </div>
 
-                        <th className="text-left p-4">Description</th>
+                        </div>
 
-                        <th className="text-center p-4">Calories</th>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+                            <div className="bg-slate-50 rounded-xl p-4 text-center">
+                                <p className="text-sm text-slate-500">Calories</p>
+                                <p className="text-xl font-bold text-emerald-600">
+                                    {totalCalories}
+                                </p>
+                            </div>
 
-                        <th className="text-center p-4">Protein</th>
+                            <div className="bg-slate-50 rounded-xl p-4 text-center">
+                                <p className="text-sm text-slate-500">Protein</p>
+                                <p className="text-xl font-bold text-blue-600">
+                                    {totalProtein} g
+                                </p>
+                            </div>
 
-                        <th className="text-center p-4">Carbs</th>
+                            <div className="bg-slate-50 rounded-xl p-4 text-center">
+                                <p className="text-sm text-slate-500">Carbs</p>
+                                <p className="text-xl font-bold text-amber-600">
+                                    {totalCarbs} g
+                                </p>
+                            </div>
 
-                        <th className="text-center p-4">Fat</th>
-
-                        <th className="text-center p-4">Action</th>
-
-                    </tr>
-
-                </thead>
-
-                <tbody>
-
-                    {
-
-                        meals.map((meal) => {
-
-                            const totalCalories = meal.mealItems.reduce(
-                                (sum, item) => sum + item.calories,
-                                0
-                            );
-
-                            const totalProtein = meal.mealItems.reduce(
-                                (sum, item) => sum + item.protein,
-                                0
-                            );
-
-                            const totalCarbs = meal.mealItems.reduce(
-                                (sum, item) => sum + item.carbs,
-                                0
-                            );
-
-                            const totalFat = meal.mealItems.reduce(
-                                (sum, item) => sum + item.fat,
-                                0
-                            );
-
-                            return (
-                                <tr
-                                    key={meal.mealId}
-                                    className="border-t hover:bg-slate-50"
-                                >
-
-                                    <td className="p-4">
-
-                                        {new Date(meal.mealDate)
-                                            .toLocaleDateString()}
-
-                                    </td>
-
-                                    <td className="p-4">
-
-                                        {meal.mealText}
-
-                                    </td>
-
-                                    <td className="text-center">
-
-                                        {totalCalories}
-
-                                    </td>
-
-                                    <td className="text-center">
-
-                                        {totalProtein}
-
-                                    </td>
-
-                                    <td className="text-center">
-
-                                        {totalCarbs}
-
-                                    </td>
-
-                                    <td className="text-center">
-
-                                        {totalFat}
-
-                                    </td>
-
-                                    <td className="text-center">
-
-                                        <button
-                                            className="text-emerald-600 hover:text-emerald-700"
-                                        >
-
-                                            <Eye size={20} />
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-                            );
-                        })
-
-                    }
-
-                </tbody>
-
-            </table>
-
+                            <div className="bg-slate-50 rounded-xl p-4 text-center">
+                                <p className="text-sm text-slate-500">Fat</p>
+                                <p className="text-xl font-bold text-rose-600">
+                                    {totalFat} g
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                );
+            })}
         </div>
-
     );
-
 }

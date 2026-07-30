@@ -58,35 +58,17 @@ export default function Sidebar({
             {/* Overlay */}
             <div
                 onClick={() => setSidebarOpen(false)}
-                className={`fixed inset-0 bg-black/40 z-30 transition-opacity md:hidden ${sidebarOpen
-                        ? "opacity-100 visible"
-                        : "opacity-0 invisible"
+                className={`fixed top-16 left-0 right-0 bottom-0 bg-black/40 z-30 md:hidden transition-opacity ${sidebarOpen
+                    ? "opacity-100 visible"
+                    : "opacity-0 invisible"
                     }`}
             />
 
             <aside
-                className={`
-        fixed md:static
-        top-16 md:top-0
-        left-0
-        z-40
-        h-[calc(100vh-4rem)] md:h-screen
-        w-72
-        bg-white
-        border-r
-        border-slate-200
-        transform
-        transition-transform
-        duration-300
-        ${sidebarOpen
-                        ? "translate-x-0"
-                        : "-translate-x-full md:translate-x-0"
-                    }
-    `}
-            >
+                className={`fixed md:fixed top-16 left-0 z-40 w-72 h-[calc(100vh-4rem)] bg-white border-r border-slate-200 transition-transform duration-300
+                    ${sidebarOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0"}`}>
 
                 <div className="p-5 space-y-2">
-
                     {menus.map((menu) => (
                         <NavLink
                             key={menu.path}

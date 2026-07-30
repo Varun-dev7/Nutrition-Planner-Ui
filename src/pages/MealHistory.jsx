@@ -48,7 +48,7 @@ export default function MealHistory() {
 
     return (
 
-        <div className="space-y-8">
+        <div className="space-y-4 md:space-y-8">
 
             <PageHeader
                 title="Meal History"

@@ -29,7 +29,6 @@ export default function MealPlanHistory() {
     }, []);
 
     const loadHistory = async () => {
-   console.log("loadHistory called");
         try {
 
             const response = await getMealPlanHistory(3);

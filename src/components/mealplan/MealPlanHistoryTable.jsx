@@ -1,74 +1,83 @@
 import { Eye } from "lucide-react";
 import Button from "../common/Button";
 
-export default function MealPlanHistoryTable({
-    mealPlans,
-    onView,
-}) {
+export default function MealPlanHistoryTable({mealPlans,onView,}) {
     return (
-        <div className="overflow-x-auto rounded-xl bg-white shadow">
+        <div className="space-y-5">
+            {mealPlans.map((plan) => (
+                <div
+                    key={plan.mealPlanId}
+                    className="bg-white rounded-2xl shadow border p-5 hover:shadow-md transition"
+                >
+                    <div className="flex justify-between items-start gap-4">
 
-            <table className="min-w-full">
-
-                <thead className="bg-gray-100">
-                    <tr>
-                        <th className="px-4 py-3 text-left">Date</th>
-                        <th className="px-4 py-3 text-center">Calories</th>
-                        <th className="px-4 py-3 text-center">Protein</th>
-                        <th className="px-4 py-3 text-center">Carbs</th>
-                        <th className="px-4 py-3 text-center">Fat</th>
-                        <th className="px-4 py-3 text-center">Action</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    {mealPlans.map((plan) => (
-
-                        <tr
-                            key={plan.id}
-                            className="border-t hover:bg-gray-50"
-                        >
-                            <td className="px-4 py-3">
+                        <div>
+                            <p className="text-sm text-slate-500">
                                 {new Date(
                                     plan.createdAt || plan.planDate
                                 ).toLocaleDateString()}
-                            </td>
+                            </p>
 
-                            <td className="px-4 py-3 text-center">
+                            <h3 className="mt-2 text-lg font-semibold text-slate-800">
+                                AI Meal Plan
+                            </h3>
+                        </div>
+
+                        <Button
+                            size="sm"
+                            onClick={() => onView(plan)}
+                        >
+                            <Eye size={16} className="mr-1" />
+                            View
+                        </Button>
+
+                    </div>
+
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+
+                        <div className="bg-slate-50 rounded-xl p-4 text-center">
+                            <p className="text-sm text-slate-500">
+                                Calories
+                            </p>
+
+                            <p className="text-xl font-bold text-emerald-600">
                                 {plan.totalCalories}
-                            </td>
+                            </p>
+                        </div>
 
-                            <td className="px-4 py-3 text-center">
+                        <div className="bg-slate-50 rounded-xl p-4 text-center">
+                            <p className="text-sm text-slate-500">
+                                Protein
+                            </p>
+
+                            <p className="text-xl font-bold text-blue-600">
                                 {plan.totalProtein} g
-                            </td>
+                            </p>
+                        </div>
 
-                            <td className="px-4 py-3 text-center">
+                        <div className="bg-slate-50 rounded-xl p-4 text-center">
+                            <p className="text-sm text-slate-500">
+                                Carbs
+                            </p>
+
+                            <p className="text-xl font-bold text-amber-600">
                                 {plan.totalCarbs} g
-                            </td>
+                            </p>
+                        </div>
 
-                            <td className="px-4 py-3 text-center">
+                        <div className="bg-slate-50 rounded-xl p-4 text-center">
+                            <p className="text-sm text-slate-500">
+                                Fat
+                            </p>
+
+                            <p className="text-xl font-bold text-rose-600">
                                 {plan.totalFat} g
-                            </td>
+                            </p>
+                        </div>
 
-                            <td className="px-4 py-3 text-center">
-                                <Button
-                                    size="sm"
-                                    onClick={() => onView(plan)}
-                                >
-                                    <Eye size={16} className="mr-1" />
-                                    View
-                                </Button>
-                            </td>
-
-                        </tr>
-
-                    ))}
-
-                </tbody>
-
-            </table>
-
+                    </div>
+                </div>
+            ))}
         </div>
     );
 }

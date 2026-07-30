@@ -1,27 +1,29 @@
 import { useState } from "react";
 import { Outlet } from "react-router-dom";
-import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
 export default function MainLayout() {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     return (
-        <div className="flex min-h-screen bg-slate-50">
+        <div className="min-h-screen bg-slate-50">
 
-            <Sidebar
+            {/* Full Width Navbar */}
+            <Navbar
                 sidebarOpen={sidebarOpen}
                 setSidebarOpen={setSidebarOpen}
             />
 
-            <div className="flex flex-1 flex-col">
+            {/* Body */}
+            <div className="flex">
 
-                <Navbar
+                <Sidebar
                     sidebarOpen={sidebarOpen}
                     setSidebarOpen={setSidebarOpen}
                 />
 
-                <main className="flex-1 overflow-auto p-4 md:p-6">
+                <main className="flex-1 p-4 md:p-6 md:ml-72">
                     <Outlet />
                 </main>
 
