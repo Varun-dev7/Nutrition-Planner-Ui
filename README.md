@@ -47,8 +47,6 @@ src
 ├── layouts
 ├── pages
 ├── routes
-├── services
-├── utils
 └── App.jsx
 ```
 
@@ -100,7 +98,7 @@ Example
 
 ```javascript
 const api = axios.create({
-    baseURL: "https://localhost:7000/api"
+    baseURL: "https://nutrition-planner.somee.com/api"
 });
 ```
 
