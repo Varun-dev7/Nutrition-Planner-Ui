@@ -1,16 +1,133 @@
-# React + Vite
+# 🥗 Knowledge-Grounded Nutrition Planning Assistant (Frontend)
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+A modern React application that helps users track nutrition, analyze meals using AI, generate personalized meal plans, and monitor daily nutritional intake.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Features
 
-## React Compiler
+- User Profile Management
+- AI Meal Analysis
+- Meal History
+- AI Meal Plan Generation
+- Meal Plan History
+- Food Nutrition Database
+- Dashboard with Nutrition Summary
+- Responsive UI
+- Modern Card-Based Design
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the Oxlint configuration
+## 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+- React 19
+- Vite
+- React Router DOM
+- Axios
+- Tailwind CSS
+- Recharts
+- Lucide React
+
+---
+
+## 📂 Project Structure
+
+```
+src
+│
+├── assets
+├── components
+│   ├── common
+│   ├── dashboard
+│   ├── meal
+│   ├── mealplan
+│   ├── profile
+│   └── nutrition
+│
+├── layouts
+├── pages
+├── routes
+├── services
+├── utils
+└── App.jsx
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository
+
+```bash
+git clone https://github.com/yourusername/NutritionPlannerFrontend.git
+```
+
+Go to project
+
+```bash
+cd NutritionPlannerFrontend
+```
+
+Install packages
+
+```bash
+npm install
+```
+
+Run
+
+```bash
+npm run dev
+```
+
+Build
+
+```bash
+npm run build
+```
+
+---
+
+## 🔗 Backend API
+
+Update the Axios Base URL inside
+
+```
+src/services/CreateAxios.js
+```
+
+Example
+
+```javascript
+const api = axios.create({
+    baseURL: "https://localhost:7000/api"
+});
+```
+
+---
+
+## 📸 Modules
+
+- Dashboard
+- Profile
+- Analyze Meal
+- Meal History
+- AI Meal Plan
+- Meal Plan History
+- Food Nutrition
+
+---
+
+## 🎨 UI
+
+- Responsive Design
+- Mobile Sidebar
+- Modern Dashboard
+- Card Layouts
+- Tailwind CSS
+
+---
+
+## 👨‍💻 Developed By
+
+Varun Gupta
