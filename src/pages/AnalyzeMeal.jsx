@@ -70,7 +70,7 @@ export default function AnalyzeMeal() {
 
             const request = {
 
-                userProfileId: 1,
+                userProfileId: 3,
 
                 mealDescription: mealText,
 
